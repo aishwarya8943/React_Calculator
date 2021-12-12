@@ -1,23 +1,52 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react'
 
-function App() {
+const App = () => {
+
+  const [result,setResult] = useState("");
+
+  const handleClick = (val)=>{
+    setResult (result.concat(val.target.name))
+  }
+
+  const backSpace = ()=>{
+    setResult(result.slice(0,result.length-1))
+  }
+
+  const clearInput = () =>{
+    setResult( " ")
+  }
+
+  const calculateResult =()=>{
+    setResult(eval(result).toString());
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="input-type">
+        <input type ="text" value ={result}></input>
+      </div>
+      <div className="button-type">
+        <button id ="clear" onClick ={clearInput}>clear</button>
+        <button id ="operator" onClick ={backSpace}>c</button>
+        <button id ="operator" name ="+" onClick ={handleClick}>+</button>
+        <button id ="digit" name ="7" onClick ={handleClick}>7</button>
+        <button id ="digit" name ="8" onClick ={handleClick}>8</button>
+        <button id ="digit" name ="9" onClick ={handleClick}>9</button>
+        <button id ="operator" name ="-" onClick ={handleClick}>-</button>
+        <button id ="digit" name ="4" onClick ={handleClick}>4</button>
+        <button id ="digit" name ="5" onClick ={handleClick}>5</button>
+        <button id ="digit" name ="6" onClick ={handleClick}>6</button>
+        <button id ="operator" name ="*" onClick ={handleClick}>*</button>
+        <button id ="digit" name ="1" onClick ={handleClick}>1</button>
+        <button id ="digit" name ="2" onClick ={handleClick}>2</button>
+        <button id ="digit" name ="3" onClick ={handleClick}>3</button>
+        <button id ="operator" name ="/" onClick ={handleClick}>/</button>
+        <button id ="digit" name ="0" onClick ={handleClick}>0</button>
+        <button id ="operator" name ="." onClick ={handleClick}>.</button>
+        <button id ="result" name ="=" onClick ={calculateResult}>=</button>
+   
+      </div>
     </div>
   );
 }
