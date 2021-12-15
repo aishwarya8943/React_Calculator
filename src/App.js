@@ -5,9 +5,16 @@ import {useState} from 'react'
 const App = () => {
 
   const [result,setResult] = useState("");
+  const [flag,setFlag] =useState(false)
+  const ops = ['+','-','/','*']
+
 
   const handleClick = (val)=>{
-    setResult (result.concat(val.target.name))
+    if (flag && !ops.includes(val.target.name))
+      setResult (val.target.name)
+    else
+      setResult (result.concat(val.target.name))
+    setFlag(false)
   }
 
   const backSpace = ()=>{
@@ -15,16 +22,20 @@ const App = () => {
   }
 
   const clearInput = () =>{
-    setResult( " ")
+    setResult( "")
   }
 
   const calculateResult =()=>{
+    if (result === "")
+      return;
     setResult(eval(result).toString());
+    setFlag(true)
   }
   return (
     <div className="App">
       <div className="input-type">
-        <input type ="text" value ={result}></input>
+        {/* <input type ="text" value ={result}></input> */}
+        {result}
       </div>
       <div className="button-type">
         <button id ="clear" onClick ={clearInput}>clear</button>

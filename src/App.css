@@ -26,7 +26,17 @@ input[type ="text"]{
   text-align: right;
   letter-spacing: 1px;
 }
-
+.input-type{
+  height: 80px;
+  width : 390px;
+  border-radius: 5px;
+  font-size: 28px;
+  font-weight :800;
+  text-align: right;
+  letter-spacing: 1px;
+  color : black;
+  background-color: white;
+}
 
 .button-type{
   display: grid;
